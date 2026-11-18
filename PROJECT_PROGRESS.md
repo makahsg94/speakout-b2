@@ -15,7 +15,8 @@ Reproduce the original `https://the-book-2.pages.dev/` website (repo `makahsg94/
 - Desktop browser verification: complete
 - Mobile/responsive verification: complete
 - Documentation refresh: complete
-- Upload / deployment: **not started** (explicitly out of scope for this task)
+- Upload: repository created, push in progress (see Upload section)
+- Deployment: **not started**
 
 ## Source material verified
 - `689_1- Speakout 3rd B2 Student's Book_2022.pdf` — 179 PDF pages; text layer on 171 pages; image-only pages 107–109 and 144–147. Rendered to `public/book/p001.jpg`–`p179.jpg` at 200 DPI.
@@ -63,7 +64,13 @@ Reproduce the original `https://the-book-2.pages.dev/` website (repo `makahsg94/
 - Pages 107–109 and 144–147 are image-only in the PDF; their content is available only as page scans.
 
 ## Remaining work
-- None for the requested build/fix scope. Upload and deployment remain deliberately untouched.
+- Confirm the GitHub push result, then (optionally) enable Pages deployment. No other build/fix work remains.
 
 ## Upload / deployment
-- Not started. No commit, push, upload or deploy was performed.
+- Used the desktop uploader's workflow (`D:\67\Desktop\GitHub Uploader\GitHub-One-Click.ps1`) against the whole `D:\New Book-B2` folder, adapted to run non-interactively.
+- User choices: repository `speakout-b2`, visibility `public`, upload the entire source folder.
+- `git init -b main`, `git lfs install --local`, `.gitignore` (uploader defaults), commit `Update 2026-11-18 22:34` with 1092 files.
+- The uploader's hard >100 MB abort was solved with Git LFS: `.gitattributes` tracks `*.zip`, so the 119 MB audio archive and 246 MB video archive are stored in LFS instead of regular Git.
+- Repository created: `https://github.com/makahsg94/speakout-b2` (public).
+- `git push -u origin main` was started in the background; its result is pending confirmation.
+- Deployment (GitHub Pages / workflow) has not been performed.

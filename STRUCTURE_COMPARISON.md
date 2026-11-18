@@ -16,7 +16,8 @@ The comparison and plan below were executed. `b2-site` now uses the original ref
 | Lightbox | Zoom capped at native source resolution; native non-passive wheel listener (no passive-listener console errors) |
 | Media | 88 audio + 16 video bundled and unmodified; unit videos in `UnitPage`, audio bound to source lesson codes |
 | Gates | `verify-structure` PASS 364, `verify:content` PASS 253, `verify:images` PASS 5, `npm run build` passes |
-| Not done | Upload/deployment intentionally untouched |
+| Upload | Repo `makahsg94/speakout-b2` (public) created with the desktop uploader workflow; >100 MB source archives handled with Git LFS; push in progress |
+| Not done | Deployment not started |
 
 ## 0. Source of truth and scope decision
 
@@ -238,4 +239,5 @@ The cleanest, lowest-risk path is to **restore the original reference source as 
 - [x] Desktop and mobile tested for all major pages (390px responsive check: no horizontal overflow).
 - [x] Book page scans are 1-based and high resolution (`verify:images`: PASS 5; 1653×2339, p001–p179).
 - [x] `npm run build` passes with no errors.
-- [ ] Upload and deployment — deliberately not performed for this task.
+- [ ] Upload — repo created and push started; final result pending confirmation.
+- [ ] Deployment — not started.
