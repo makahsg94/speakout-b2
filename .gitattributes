@@ -1,0 +1,2 @@
+# Source archives exceed GitHub's 100 MB regular-file limit; store them in LFS.
+*.zip filter=lfs diff=lfs merge=lfs -text
