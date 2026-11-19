@@ -1,6 +1,7 @@
 type VocabItem = {
   word: string
   meaning?: string
+  translation?: string
   note?: string
   example?: string
 }
@@ -27,87 +28,108 @@ export const vocabGroups: VocabGroup[] = [
     "items": [
       {
         "word": "reliable",
-        "example": "We can depend on Sam to be here on time. He’s very reliable."
+        "translation": "موثوق",
+"example": "We can depend on Sam to be here on time. He’s very reliable."
       },
       {
         "word": "emotional",
-        "example": "Melissa became quite emotional as she was watching the film."
+        "translation": "عاطفي",
+"example": "Melissa became quite emotional as she was watching the film."
       },
       {
         "word": "practical",
-        "example": "Al will need some help setting up the new printer. He’s not very practical."
+        "translation": "عملي",
+"example": "Al will need some help setting up the new printer. He’s not very practical."
       },
       {
         "word": "optimistic",
-        "example": "I love the fact that Leo is always so optimistic about life!"
+        "translation": "متفائل",
+"example": "I love the fact that Leo is always so optimistic about life!"
       },
       {
         "word": "talented",
-        "example": "Sasha is a really talented musician."
+        "translation": "موهوب",
+"example": "Sasha is a really talented musician."
       },
       {
         "word": "helpful",
-        "example": "Thanks for moving those boxes – it was really helpful."
+        "translation": "مُعين / مفيد",
+"example": "Thanks for moving those boxes – it was really helpful."
       },
       {
         "word": "thoughtful",
-        "example": "It was very thoughtful of you to send those flowers to cheer me up!"
+        "translation": "راعٍ ومهتم",
+"example": "It was very thoughtful of you to send those flowers to cheer me up!"
       },
       {
         "word": "sociable",
-        "example": "I don’t think I’ll go to the party – I’m not feeling very sociable today."
+        "translation": "اجتماعي",
+"example": "I don’t think I’ll go to the party – I’m not feeling very sociable today."
       },
       {
         "word": "adventurous",
-        "example": "I’m not adventurous enough to go paragliding!"
+        "translation": "مغامر",
+"example": "I’m not adventurous enough to go paragliding!"
       },
       {
         "word": "ambitious",
-        "example": "I’m sure she’ll be prime minister one day. She’s incredibly ambitious."
+        "translation": "طموح",
+"example": "I’m sure she’ll be prime minister one day. She’s incredibly ambitious."
       },
       {
         "word": "experienced",
-        "note": "experience + -ed"
+        "translation": "ذو خبرة",
+"note": "experience + -ed"
       },
       {
         "word": "relaxed",
-        "note": "relax + -ed"
+        "translation": "مرتاح / هادئ",
+"note": "relax + -ed"
       },
       {
         "word": "optimistic",
-        "note": "optimist + -ic"
+        "translation": "متفائل",
+"note": "optimist + -ic"
       },
       {
         "word": "pessimistic",
-        "note": "pessimist + -ic"
+        "translation": "متشائم",
+"note": "pessimist + -ic"
       },
       {
         "word": "realistic",
-        "note": "realist + -ic"
+        "translation": "واقعي",
+"note": "realist + -ic"
       },
       {
         "word": "generous",
-        "note": "gener + -ous"
+        "translation": "كريم",
+"note": "gener + -ous"
       },
       {
         "word": "reliable",
-        "note": "reli + -able"
+        "translation": "موثوق",
+"note": "reli + -able"
       },
       {
         "word": "thoughtful",
-        "note": "thought + -ful"
+        "translation": "راعٍ ومهتم",
+"note": "thought + -ful"
       },
       {
         "word": "cheerful",
-        "note": "cheer + -ful"
+        "translation": "مبتهج",
+"note": "cheer + -ful"
       },
       {
         "word": "practical",
-        "note": "practic + -al"
+        "translation": "عملي",
+"note": "practic + -al"
       },
       {
         "word": "musical",
-        "note": "music + -al"
+        "translation": "موسيقي",
+"note": "music + -al"
       }
     ]
   },
@@ -120,27 +142,33 @@ export const vocabGroups: VocabGroup[] = [
     "items": [
       {
         "word": "go in one ear and out the other",
-        "example": "He never remembers anything I tell him! Things go in one ear and out the other."
+        "translation": "يدخل من أذن ويخرج من الأخرى",
+"example": "He never remembers anything I tell him! Things go in one ear and out the other."
       },
       {
         "word": "slip my mind",
-        "example": "Sorry, it totally slipped my mind."
+        "translation": "ينساني / يغيب عن ذهني",
+"example": "Sorry, it totally slipped my mind."
       },
       {
         "word": "refresh my memory",
-        "example": "I’ll need to look at my notes again to refresh my memory."
+        "translation": "ينعش ذاكرتي",
+"example": "I’ll need to look at my notes again to refresh my memory."
       },
       {
         "word": "on the tip of my tongue",
-        "example": "The answer is on the tip of my tongue!"
+        "translation": "على طرف لساني",
+"example": "The answer is on the tip of my tongue!"
       },
       {
         "word": "ring a bell",
-        "example": "I’m sure I’ve heard that name before. It definitely rings a bell."
+        "translation": "يبدو مألوفًا",
+"example": "I’m sure I’ve heard that name before. It definitely rings a bell."
       },
       {
         "word": "play tricks on me",
-        "example": "My memory is playing tricks on me."
+        "translation": "تخدعني (ذاكرتي)",
+"example": "My memory is playing tricks on me."
       }
     ]
   },
@@ -152,47 +180,61 @@ export const vocabGroups: VocabGroup[] = [
     "intro": "Vocabulary Bank, page 137",
     "items": [
       {
-        "word": "research"
-      },
+        "word": "research",
+        "translation": "بحث / يبحث"
+},
       {
-        "word": "predict"
-      },
+        "word": "predict",
+        "translation": "يتنبأ"
+},
       {
-        "word": "prediction"
-      },
+        "word": "prediction",
+        "translation": "تنبؤ"
+},
       {
-        "word": "predictably"
-      },
+        "word": "predictably",
+        "translation": "كما هو متوقع"
+},
       {
-        "word": "virtual"
-      },
+        "word": "virtual",
+        "translation": "افتراضي"
+},
       {
-        "word": "virtually"
-      },
+        "word": "virtually",
+        "translation": "تقريبًا / افتراضيًا"
+},
       {
-        "word": "remotely"
-      },
+        "word": "remotely",
+        "translation": "عن بُعد"
+},
       {
-        "word": "analyse"
-      },
+        "word": "analyse",
+        "translation": "يحلل"
+},
       {
-        "word": "analyst"
-      },
+        "word": "analyst",
+        "translation": "محلل"
+},
       {
-        "word": "analytical"
-      },
+        "word": "analytical",
+        "translation": "تحليلي"
+},
       {
-        "word": "analytically"
-      },
+        "word": "analytically",
+        "translation": "بشكل تحليلي"
+},
       {
-        "word": "science"
-      },
+        "word": "science",
+        "translation": "علم"
+},
       {
-        "word": "scientist"
-      },
+        "word": "scientist",
+        "translation": "عالم"
+},
       {
-        "word": "scientific"
-      }
+        "word": "scientific",
+        "translation": "علمي"
+}
     ]
   },
   {
@@ -204,34 +246,42 @@ export const vocabGroups: VocabGroup[] = [
     "items": [
       {
         "word": "solar power",
-        "meaning": "Electricity produced using energy from the sun."
+        "translation": "طاقة شمسية",
+"meaning": "Electricity produced using energy from the sun."
       },
       {
         "word": "(natural) resources",
-        "meaning": "Things that a country, person or organisation has that they can use."
+        "translation": "موارد (طبيعية)",
+"meaning": "Things that a country, person or organisation has that they can use."
       },
       {
         "word": "clean-up",
-        "meaning": "An event which is organised in order to make a place clean."
+        "translation": "حملة تنظيف",
+"meaning": "An event which is organised in order to make a place clean."
       },
       {
         "word": "carbon emissions",
-        "meaning": "When gases responsible for global warming are released into the air."
+        "translation": "انبعاثات كربونية",
+"meaning": "When gases responsible for global warming are released into the air."
       },
       {
         "word": "sustainable",
-        "meaning": "Used to describe an activity that you can continue without causing damage to the environment."
+        "translation": "مستدام",
+"meaning": "Used to describe an activity that you can continue without causing damage to the environment."
       },
       {
         "word": "renewable",
-        "meaning": "Used to describe something which can replace itself naturally, or be easily replaced."
+        "translation": "متجدد",
+"meaning": "Used to describe something which can replace itself naturally, or be easily replaced."
       },
       {
-        "word": "carbon footprint"
-      },
+        "word": "carbon footprint",
+        "translation": "البصمة الكربونية"
+},
       {
-        "word": "recycling"
-      }
+        "word": "recycling",
+        "translation": "إعادة التدوير"
+}
     ]
   },
   {
@@ -242,32 +292,41 @@ export const vocabGroups: VocabGroup[] = [
     "intro": "Vocabulary Bank, page 138",
     "items": [
       {
-        "word": "speak up"
-      },
+        "word": "speak up",
+        "translation": "يتكلم بصوت أعلى / يعبر بوضوح"
+},
       {
-        "word": "point out"
-      },
+        "word": "point out",
+        "translation": "يشير إلى / ينبه إلى"
+},
       {
-        "word": "spell out"
-      },
+        "word": "spell out",
+        "translation": "يشرح بوضوح وتفصيل"
+},
       {
-        "word": "move on"
-      },
+        "word": "move on",
+        "translation": "ينتقل (لموضوع آخر) / يمضي قدمًا"
+},
       {
-        "word": "keep quiet"
-      },
+        "word": "keep quiet",
+        "translation": "يلتزم الصمت"
+},
       {
-        "word": "bring up"
-      },
+        "word": "bring up",
+        "translation": "يطرح (موضوعًا)"
+},
       {
-        "word": "come back"
-      },
+        "word": "come back",
+        "translation": "يعود / يرجع للموضوع"
+},
       {
-        "word": "come across"
-      },
+        "word": "come across",
+        "translation": "يبدو / يُفهَم على أنه"
+},
       {
-        "word": "get my message across"
-      }
+        "word": "get my message across",
+        "translation": "يوصل رسالته بوضوح"
+}
     ]
   },
   {
@@ -278,23 +337,29 @@ export const vocabGroups: VocabGroup[] = [
     "intro": "Vocabulary Bank, page 138",
     "items": [
       {
-        "word": "antibiotics"
-      },
+        "word": "antibiotics",
+        "translation": "مضادات حيوية"
+},
       {
-        "word": "first aid"
-      },
+        "word": "first aid",
+        "translation": "إسعافات أولية"
+},
       {
-        "word": "medication"
-      },
+        "word": "medication",
+        "translation": "دواء / علاج"
+},
       {
-        "word": "vaccine"
-      },
+        "word": "vaccine",
+        "translation": "لقاح"
+},
       {
-        "word": "asthma"
-      },
+        "word": "asthma",
+        "translation": "ربو"
+},
       {
-        "word": "allergies"
-      }
+        "word": "allergies",
+        "translation": "حساسية"
+}
     ]
   },
   {
@@ -306,55 +371,69 @@ export const vocabGroups: VocabGroup[] = [
     "items": [
       {
         "word": "confidence",
-        "meaning": "the feeling that you are able to do something"
+        "translation": "ثقة بالنفس",
+"meaning": "the feeling that you are able to do something"
       },
       {
         "word": "teamwork",
-        "meaning": "working together with other people"
+        "translation": "عمل جماعي",
+"meaning": "working together with other people"
       },
       {
         "word": "benefit",
-        "meaning": "an advantage of doing something"
+        "translation": "فائدة / ميزة",
+"meaning": "an advantage of doing something"
       },
       {
         "word": "habit",
-        "meaning": "something that you do regularly"
+        "translation": "عادة",
+"meaning": "something that you do regularly"
       },
       {
         "word": "motivation",
-        "meaning": "the feeling of wanting to do something"
+        "translation": "دافع / حافز",
+"meaning": "the feeling of wanting to do something"
       },
       {
         "word": "encouragement",
-        "meaning": "gently persuading someone to do something"
+        "translation": "تشجيع",
+"meaning": "gently persuading someone to do something"
       },
       {
         "word": "incentive",
-        "meaning": "something which makes you want to do or achieve something"
+        "translation": "حافز",
+"meaning": "something which makes you want to do or achieve something"
       },
       {
         "word": "discipline",
-        "meaning": "the ability to continue doing something, even when you don’t really want to do it"
+        "translation": "انضباط",
+"meaning": "the ability to continue doing something, even when you don’t really want to do it"
       },
       {
         "word": "challenge",
-        "meaning": "something which is difficult to achieve"
+        "translation": "تحدٍ",
+"meaning": "something which is difficult to achieve"
       },
       {
-        "word": "stamina"
-      },
+        "word": "stamina",
+        "translation": "قوة تحمل"
+},
       {
-        "word": "opponent"
-      },
+        "word": "opponent",
+        "translation": "خصم / منافس"
+},
       {
-        "word": "trophies"
-      },
+        "word": "trophies",
+        "translation": "كؤوس / جوائز"
+},
       {
-        "word": "cooperation"
-      },
+        "word": "cooperation",
+        "translation": "تعاون"
+},
       {
-        "word": "fitness"
-      }
+        "word": "fitness",
+        "translation": "لياقة بدنية"
+}
     ]
   },
   {
@@ -365,35 +444,45 @@ export const vocabGroups: VocabGroup[] = [
     "intro": "Vocabulary Bank, page 140 · Audio VB5.01",
     "items": [
       {
-        "word": "accountancy"
-      },
+        "word": "accountancy",
+        "translation": "محاسبة"
+},
       {
-        "word": "agriculture"
-      },
+        "word": "agriculture",
+        "translation": "زراعة"
+},
       {
-        "word": "banking"
-      },
+        "word": "banking",
+        "translation": "أعمال مصرفية"
+},
       {
-        "word": "construction"
-      },
+        "word": "construction",
+        "translation": "بناء / تشييد"
+},
       {
-        "word": "consultancy"
-      },
+        "word": "consultancy",
+        "translation": "استشارات"
+},
       {
-        "word": "journalism"
-      },
+        "word": "journalism",
+        "translation": "صحافة"
+},
       {
-        "word": "medicine"
-      },
+        "word": "medicine",
+        "translation": "طب"
+},
       {
-        "word": "publishing"
-      },
+        "word": "publishing",
+        "translation": "نشر"
+},
       {
-        "word": "research"
-      },
+        "word": "research",
+        "translation": "بحث / يبحث"
+},
       {
-        "word": "social work"
-      }
+        "word": "social work",
+        "translation": "عمل اجتماعي"
+}
     ]
   },
   {
@@ -405,43 +494,53 @@ export const vocabGroups: VocabGroup[] = [
     "items": [
       {
         "word": "imperfect",
-        "note": "im- + perfect"
+        "translation": "غير كامل / ناقص",
+"note": "im- + perfect"
       },
       {
         "word": "impatient",
-        "note": "im- + patient"
+        "translation": "غير صبور",
+"note": "im- + patient"
       },
       {
         "word": "dishonest",
-        "note": "dis- + honest"
+        "translation": "غير أمين",
+"note": "dis- + honest"
       },
       {
         "word": "disappear",
-        "note": "dis- + appear"
+        "translation": "يختفي",
+"note": "dis- + appear"
       },
       {
         "word": "retrain",
-        "note": "re- + train"
+        "translation": "يعيد التدريب",
+"note": "re- + train"
       },
       {
         "word": "rewrite",
-        "note": "re- + write"
+        "translation": "يعيد الكتابة",
+"note": "re- + write"
       },
       {
         "word": "misheard",
-        "note": "mis- + hear"
+        "translation": "سمع خطأ",
+"note": "mis- + hear"
       },
       {
         "word": "misread",
-        "note": "mis- + read"
+        "translation": "قرأ خطأ / أساء الفهم",
+"note": "mis- + read"
       },
       {
         "word": "subheading",
-        "note": "sub- + heading"
+        "translation": "عنوان فرعي",
+"note": "sub- + heading"
       },
       {
         "word": "sub-zero",
-        "note": "sub- + zero"
+        "translation": "دون الصفر",
+"note": "sub- + zero"
       }
     ]
   },
@@ -454,27 +553,33 @@ export const vocabGroups: VocabGroup[] = [
     "items": [
       {
         "word": "admit",
-        "example": "She admitted taking the money."
+        "translation": "يعترف",
+"example": "She admitted taking the money."
       },
       {
         "word": "insist on",
-        "example": "He insisted on driving me to the station."
+        "translation": "يصر على",
+"example": "He insisted on driving me to the station."
       },
       {
         "word": "claim",
-        "example": "They claimed that the story wasn’t true."
+        "translation": "يدعي / يزعم",
+"example": "They claimed that the story wasn’t true."
       },
       {
         "word": "refuse",
-        "example": "She refused to leave."
+        "translation": "يرفض",
+"example": "She refused to leave."
       },
       {
         "word": "persuade",
-        "example": "He persuaded her to apply for the promotion."
+        "translation": "يقنع",
+"example": "He persuaded her to apply for the promotion."
       },
       {
         "word": "criticise ... for",
-        "example": "She criticised him for being late."
+        "translation": "ينتقد ... على",
+"example": "She criticised him for being late."
       }
     ]
   },
@@ -486,23 +591,29 @@ export const vocabGroups: VocabGroup[] = [
     "intro": "Vocabulary Bank, page 141 · Audio VB7.01",
     "items": [
       {
-        "word": "random"
-      },
+        "word": "random",
+        "translation": "عشوائي"
+},
       {
-        "word": "accidental"
-      },
+        "word": "accidental",
+        "translation": "عرضي / غير مقصود"
+},
       {
-        "word": "fortunate"
-      },
+        "word": "fortunate",
+        "translation": "محظوظ"
+},
       {
-        "word": "unfortunate"
-      },
+        "word": "unfortunate",
+        "translation": "مؤسف / سيئ الحظ"
+},
       {
-        "word": "by chance"
-      },
+        "word": "by chance",
+        "translation": "بالصدفة"
+},
       {
-        "word": "freak"
-      }
+        "word": "freak",
+        "translation": "شاذ / غير معتاد"
+}
     ]
   },
   {
@@ -514,30 +625,38 @@ export const vocabGroups: VocabGroup[] = [
     "items": [
       {
         "word": "character",
-        "meaning": "a combination of qualities that makes a place different to others"
+        "translation": "طابع / سمة مميزة",
+"meaning": "a combination of qualities that makes a place different to others"
       },
       {
         "word": "exclusive",
-        "meaning": "so expensive that most people cannot afford it"
+        "translation": "حصري / فاخر جدًا",
+"meaning": "so expensive that most people cannot afford it"
       },
       {
-        "word": "stylish"
-      },
+        "word": "stylish",
+        "translation": "أنيق"
+},
       {
-        "word": "elegant"
-      },
+        "word": "elegant",
+        "translation": "راقٍ"
+},
       {
-        "word": "secure"
-      },
+        "word": "secure",
+        "translation": "آمن"
+},
       {
-        "word": "spacious"
-      },
+        "word": "spacious",
+        "translation": "واسع / فسيح"
+},
       {
-        "word": "fashionable"
-      },
+        "word": "fashionable",
+        "translation": "على الموضة"
+},
       {
-        "word": "condition"
-      }
+        "word": "condition",
+        "translation": "حالة (المكان)"
+}
     ]
   }
 ]

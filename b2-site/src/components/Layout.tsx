@@ -30,7 +30,7 @@ export default function Layout() {
           <aside className="absolute left-0 top-0 flex h-full w-80 max-w-[85vw] flex-col border-r border-[var(--line)] bg-[var(--bg)] shadow-2xl">
             <div className="flex items-center justify-between border-b border-[var(--line)] px-5 py-3">
               <span className="text-[11px] font-bold uppercase tracking-[0.22em] text-[var(--ink-faint)]">
-                Contents
+                Contents <span className="font-normal normal-case tracking-normal">المحتويات</span>
               </span>
               <button
                 type="button"
@@ -54,7 +54,7 @@ export default function Layout() {
       <BackToTop />
 
       <footer className="mx-auto max-w-4xl px-4 pb-8 pt-4 text-center text-xs text-[var(--ink-faint)]">
-        <p>Speakout 3rd Edition · Level B2 · course companion</p>
+        <p>Speakout 3rd Edition · Level B2 · رفيق الدورة</p>
       </footer>
     </div>
   )

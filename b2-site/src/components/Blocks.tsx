@@ -3,6 +3,7 @@ import type { ContentBlock } from '../types/content'
 import { AudioPlayer } from './Media'
 import { VideoCard } from './VideoCard'
 import { PageFigure } from './PageFigure'
+import { speakWord } from '../lib/speech'
 import {
   IconChevronRight,
   IconChat,
@@ -11,6 +12,7 @@ import {
   IconLayers,
   IconList,
   IconBook,
+  IconVolume,
 } from './Icons'
 import { Link } from 'react-router-dom'
 
@@ -21,7 +23,7 @@ function BankLink({ page }: { page: number }) {
       className="mt-2 inline-flex items-center gap-1.5 rounded-full bg-brand-600 px-3 py-1 text-xs font-semibold text-white transition-all hover:bg-brand-700 hover:shadow-sm"
     >
       <IconTarget size={13} />
-      Grammar Bank, page {page}
+      Grammar Bank <span className="font-normal opacity-90">بنك القواعد</span> · p.{page}
       <IconChevronRight size={13} />
     </Link>
   )
@@ -111,7 +113,7 @@ function ReadingPanel({
           <div className="min-w-0">
             <SectionLabel className="bg-accent-100 text-accent-700 dark:bg-accent-900/60 dark:text-accent-300">
               <IconBook size={12} />
-              Reading
+              Reading <span className="font-normal normal-case">قراءة</span>
             </SectionLabel>
             <h2 className="display mt-2.5 text-2xl tracking-tight sm:text-[1.7rem]">{title}</h2>
           </div>
@@ -132,6 +134,37 @@ function ReadingPanel({
         </p>
       </div>
     </section>
+  )
+}
+
+function Pronounce({ text }: { text: string }) {
+  return (
+    <span className="mt-1 inline-flex flex-wrap gap-1">
+      <button
+        type="button"
+        onClick={(e) => {
+          e.stopPropagation()
+          speakWord(text, 'en-US')
+        }}
+        className="inline-flex items-center gap-1 rounded-full border border-[var(--line-strong)] bg-[var(--bg)] px-2 py-0.5 text-[10px] font-semibold text-[var(--ink-soft)] hover:border-brand-400 hover:text-brand-700"
+        title="American pronunciation"
+        aria-label={`Play American pronunciation: ${text}`}
+      >
+        <IconVolume size={11} /> US
+      </button>
+      <button
+        type="button"
+        onClick={(e) => {
+          e.stopPropagation()
+          speakWord(text, 'en-GB')
+        }}
+        className="inline-flex items-center gap-1 rounded-full border border-[var(--line-strong)] bg-[var(--bg)] px-2 py-0.5 text-[10px] font-semibold text-[var(--ink-soft)] hover:border-brand-400 hover:text-brand-700"
+        title="British pronunciation"
+        aria-label={`Play British pronunciation: ${text}`}
+      >
+        <IconVolume size={11} /> UK
+      </button>
+    </span>
   )
 }
 
@@ -164,10 +197,13 @@ function VocabSection({
   return (
     <section id={id}>
       <div className="mb-3 mt-8 flex flex-wrap items-center gap-2.5">
-        <h2 className="flex items-center gap-2 text-xl font-bold">
-          <span className="h-6 w-1 rounded-full bg-gradient-to-b from-accent-500 to-brand-500" />
-          {block.title}
-        </h2>
+        <div className="min-w-0">
+          <h2 className="flex items-center gap-2 text-xl font-bold">
+            <span className="h-6 w-1 rounded-full bg-gradient-to-b from-accent-500 to-brand-500" />
+            {block.title}
+          </h2>
+          <p className="mt-0.5 text-[12px] text-[var(--ink-faint)]">المفردات · اضغط US/UK لسماع النطق</p>
+        </div>
         <button
           type="button"
           onClick={togglePractice}
@@ -178,22 +214,23 @@ function VocabSection({
               : 'border-[var(--line-strong)] text-[var(--ink-soft)] hover:border-brand-400'
           }`}
         >
-          {practice ? 'Exit practice' : 'Practice: hide meanings'}
+          {practice ? 'Exit practice / إنهاء التدريب' : 'Practice / تدريب (إخفاء المعنى)'}
         </button>
       </div>
 
       {!practice ? (
         <div className="overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--surface)]">
-          <div className="hidden border-b border-[var(--line)] bg-[var(--line)]/50 px-4 py-2 sm:grid sm:grid-cols-[1fr_1fr_2fr] sm:gap-4">
-            <span className="text-[11px] font-bold uppercase tracking-widest text-[var(--ink-faint)]">Word</span>
-            <span className="text-[11px] font-bold uppercase tracking-widest text-[var(--ink-faint)]">Meaning</span>
-            <span className="text-[11px] font-bold uppercase tracking-widest text-[var(--ink-faint)]">Example / Note</span>
+          <div className="hidden border-b border-[var(--line)] bg-[var(--line)]/50 px-4 py-2 sm:grid sm:grid-cols-[1.2fr_1fr_1fr_1.6fr] sm:gap-3">
+            <span className="text-[11px] font-bold uppercase tracking-widest text-[var(--ink-faint)]">Word <span className="font-normal normal-case">الكلمة</span></span>
+            <span className="text-[11px] font-bold uppercase tracking-widest text-[var(--ink-faint)]">Meaning <span className="font-normal normal-case">المعنى</span></span>
+            <span className="text-[11px] font-bold uppercase tracking-widest text-[var(--ink-faint)]">Arabic <span className="font-normal normal-case">بالعربي</span></span>
+            <span className="text-[11px] font-bold uppercase tracking-widest text-[var(--ink-faint)]">Example / Note <span className="font-normal normal-case">مثال/ملاحظة</span></span>
           </div>
           <div className="divide-y divide-[var(--line)]">
             {items.map((item, j) => (
               <div
                 key={j}
-                className="group grid gap-1 px-4 py-3 transition-colors hover:bg-[var(--line)]/30 sm:grid-cols-[1fr_1fr_2fr] sm:items-start sm:gap-4"
+                className="group grid gap-1 px-4 py-3 transition-colors hover:bg-[var(--line)]/30 sm:grid-cols-[1.2fr_1fr_1fr_1.6fr] sm:items-start sm:gap-3"
               >
                 <div className="min-w-0">
                   <span className="text-[15px] font-semibold text-brand-800 dark:text-brand-200">{item.word}</span>
@@ -206,8 +243,12 @@ function VocabSection({
                   {item.pronunciation && (
                     <span className="ml-1.5 text-[11px] italic text-[var(--ink-faint)]">/{item.pronunciation}/</span>
                   )}
+                  <div>
+                    <Pronounce text={item.word} />
+                  </div>
                 </div>
-                <div className="min-w-0 text-sm text-[var(--ink-soft)]">{item.meaning || '\u2014'}</div>
+                <div className="min-w-0 text-sm text-[var(--ink-soft)]">{item.meaning || '—'}</div>
+                <div className="min-w-0 text-sm text-[var(--ink)]" dir="rtl" lang="ar">{item.translation || '—'}</div>
                 <div className="min-w-0 space-y-1">
                   {item.example && (
                     <p className="text-[13px] italic text-[var(--ink-faint)]">
@@ -230,7 +271,7 @@ function VocabSection({
       ) : (
         <div className="overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-3">
           <p className="mb-3 flex flex-wrap items-center justify-between gap-2 text-xs text-[var(--ink-faint)]">
-            <span>Tap a card to reveal its meaning. Try to remember it first!</span>
+            <span>اضغط البطاقة لإظهار المعنى · حاول تتذكره أولاً</span>
             <span
               className={`rounded-full px-2.5 py-0.5 font-semibold ${
                 known === items.length && items.length > 0
@@ -255,10 +296,16 @@ function VocabSection({
                 }`}
               >
                 <span className="block text-[15px] font-semibold text-brand-800 dark:text-brand-200">{item.word}</span>
+                <div className="mt-1">
+                  <Pronounce text={item.word} />
+                </div>
                 {revealed.has(j) ? (
-                  <span className="mt-1 block text-[13px] text-[var(--ink-soft)]">{item.meaning || '\u2014'}</span>
+                  <span className="mt-1 block space-y-0.5">
+                    <span className="block text-[13px] text-[var(--ink-soft)]">{item.meaning || '—'}</span>
+                    {item.translation && <span className="block text-[13px] text-[var(--ink)]" dir="rtl" lang="ar">{item.translation}</span>}
+                  </span>
                 ) : (
-                  <span className="mt-1 block text-[13px] text-[var(--ink-faint)]">Tap to reveal</span>
+                  <span className="mt-1 block text-[13px] text-[var(--ink-faint)]">اضغط للإظهار / Tap to reveal</span>
                 )}
               </button>
             ))}
@@ -348,7 +395,7 @@ export default function Blocks({ blocks }: { blocks: ContentBlock[] }) {
                     <div className="rounded-xl border border-brand-200 bg-brand-50/60 p-3 dark:border-brand-800 dark:bg-brand-950/40">
                       <p className="mb-1.5 flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-brand-700 dark:text-brand-300">
                         <IconTarget size={13} />
-                        The pattern
+                        Pattern <span className="font-normal normal-case tracking-normal">النمط</span>
                       </p>
                       <RuleChips rule={block.rule} />
                     </div>
@@ -384,7 +431,7 @@ export default function Blocks({ blocks }: { blocks: ContentBlock[] }) {
                     <div>
                       <p className="mb-2 flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-accent-700 dark:text-accent-300">
                         <IconLayers size={13} />
-                        Examples
+                        Examples <span className="font-normal normal-case tracking-normal">أمثلة</span>
                       </p>
                       <ul className="space-y-1.5">
                         {block.examples.map((example, j) => (
@@ -467,7 +514,7 @@ export default function Blocks({ blocks }: { blocks: ContentBlock[] }) {
             return (
               <section key={i} id={id}>
                 <div className="section-divider">
-                  <span>Book Pages</span>
+                  <span>Book pages <span className="font-normal normal-case tracking-normal">صفحات الكتاب</span></span>
                 </div>
                 <div className="grid gap-3 sm:grid-cols-2">
                   {block.images.map((image, j) => (

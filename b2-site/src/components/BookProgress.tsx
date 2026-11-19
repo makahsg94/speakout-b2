@@ -12,7 +12,7 @@ export default function BookProgress({ compact = false }: { compact?: boolean })
     return (
       <div className="hidden min-w-28 sm:block" aria-label={`Book progress ${pct}%`}>
         <div className="mb-1 flex items-center justify-between text-[10px] font-semibold text-[var(--ink-faint)]">
-          <span>Book</span>
+          <span>Progress <span className="font-normal">التقدم</span></span>
           <span>{pct}%</span>
         </div>
         <AnimatedBar value={pct} className="h-1" bar="bg-gradient-to-r from-brand-500 to-accent-500" />
@@ -23,12 +23,12 @@ export default function BookProgress({ compact = false }: { compact?: boolean })
   return (
     <div className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-4">
       <div className="mb-2 flex items-center justify-between gap-3 text-sm">
-        <span className="font-semibold">Book progress</span>
+        <span className="font-semibold">Progress <span className="font-normal text-[var(--ink-faint)]">التقدم</span></span>
         <span className="font-bold tabular-nums text-brand-700 dark:text-brand-300">{pct}%</span>
       </div>
       <AnimatedBar value={pct} className="h-2" bar="bg-gradient-to-r from-brand-500 to-accent-500" />
       <p className="mt-2 text-xs text-[var(--ink-faint)]">
-        {done} of {lessons.length} lessons completed
+        {done}/{lessons.length} completed · مكتمل
       </p>
     </div>
   )

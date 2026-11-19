@@ -110,7 +110,7 @@ export function AudioPlayer({ tracks, title }: { tracks: AudioTrack[]; title?: s
                     )}
                   </span>
                 </span>
-                {t.page && <span className="shrink-0 text-xs text-[var(--ink-faint)]">page {t.page}</span>}
+                {t.page && <span className="shrink-0 text-xs text-[var(--ink-faint)]">p.{t.page} <span>ص</span></span>}
               </button>
 
               {mine && (
@@ -314,7 +314,7 @@ export function LightboxProvider() {
         >
           {Math.round(zoom * 100)}%
         </button>
-        <span className="hidden text-[11px] text-white/60 sm:inline">scroll or drag</span>
+        <span className="hidden text-[11px] text-white/60 sm:inline">scroll/drag · تمرير/سحب</span>
       </div>
 
       <button

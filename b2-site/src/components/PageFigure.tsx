@@ -22,7 +22,7 @@ export function PageFigure({ image }: { image: PageImage }) {
         />
         <span className="absolute right-2 top-2 inline-flex items-center gap-1.5 rounded-full bg-black/60 px-3 py-1.5 text-xs font-semibold text-white opacity-90 backdrop-blur transition-opacity group-hover:opacity-100">
           <IconZoomIn size={15} />
-          Zoom
+          Zoom <span className="font-normal opacity-90">تكبير</span>
         </span>
       </button>
       {(image.caption ?? image.alt) && (

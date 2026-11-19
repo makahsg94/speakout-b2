@@ -32,20 +32,19 @@ export default function ReviewPage() {
 
       <nav className="flex items-center gap-1 text-sm text-[var(--ink-faint)]">
         <Link to="/" className="inline-flex items-center gap-1 hover:text-[var(--ink)]">
-          <IconHome size={14} /> Home
+          <IconHome size={14} /> Home <span className="text-[var(--ink-faint)]">الرئيسية</span>
         </Link>
         <IconChevronRight size={13} />
-        <span className="text-[var(--ink)]">Review the book</span>
+        <span className="text-[var(--ink)]">Review <span className="text-[var(--ink-faint)]">مراجعة</span></span>
       </nav>
 
       <header className="title-page mx-auto max-w-xl text-center">
         <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-[var(--ink-faint)]">
-          Revision guide
+          Revision <span className="font-normal normal-case tracking-normal">مراجعة</span>
         </p>
-        <h1 className="display mt-3 text-4xl tracking-tight sm:text-5xl">Review the B2 book</h1>
+        <h1 className="display mt-3 text-4xl tracking-tight sm:text-5xl">Review <span className="text-2xl font-normal text-[var(--ink-faint)] sm:text-3xl">مراجعة B2</span></h1>
         <p className="mt-4 text-[15px] leading-relaxed text-[var(--ink-soft)]">
-          Revisit the unit review lessons and the reference banks exactly as they appear in the
-          Speakout 3rd Edition B2 Student’s Book.
+          دروس المراجعة والبنوك المرجعية كما في كتاب الطالب · Unit reviews & reference banks.
         </p>
       </header>
 
@@ -53,7 +52,7 @@ export default function ReviewPage() {
         <div className="section-divider">
           <span>
             <IconLayers size={12} className="mr-1 inline" />
-            Unit review lessons
+            Review lessons <span className="font-normal normal-case tracking-normal">دروس المراجعة</span>
           </span>
         </div>
         <ol className="space-y-1">
@@ -86,7 +85,7 @@ export default function ReviewPage() {
 
       <section>
         <div className="section-divider">
-          <span>Reference banks</span>
+          <span>Banks <span className="font-normal normal-case tracking-normal">البنوك المرجعية</span></span>
         </div>
         <div className="grid gap-3 sm:grid-cols-3">
           {BOOK.banks.map((bank) => (
@@ -116,12 +115,11 @@ export default function ReviewPage() {
       <section className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-5">
         <p className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-[var(--ink-faint)]">
           <IconBook size={13} />
-          About this review
+          Note <span className="font-normal normal-case tracking-normal">ملاحظة</span>
         </p>
         <p className="mt-2 text-[14px] leading-relaxed text-[var(--ink-soft)]">
-          The B2 Student’s Book does not include an answer key, so this companion does not author
-          quizzes or graded writing tasks. Use the review lessons, the class audio and the reference
-          banks above to check your own work against the source material.
+          لا يتضمن كتاب الطالب مفتاح إجابات، لذا استخدم دروس المراجعة والتسجيلات والبنوك للمراجعة الذاتية.
+          <span className="block mt-1 text-[var(--ink-faint)]">No answer key in the source book — use the review lessons, audio, and banks to self-check.</span>
         </p>
       </section>
     </div>

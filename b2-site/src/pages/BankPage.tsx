@@ -11,9 +11,9 @@ export default function BankPage() {
   if (!bank) {
     return (
       <div className="rounded-xl border border-[var(--line)] bg-[var(--surface)] p-8 text-center">
-        <p className="text-[var(--ink-soft)]">Bank not found.</p>
+        <p className="text-[var(--ink-soft)]">Bank not found. <span className="text-[var(--ink-faint)]">غير موجود</span></p>
         <Link to="/book" className="mt-2 inline-block text-sm font-medium text-brand-600">
-          Back to the book map
+          Back to contents · العودة للمحتويات
         </Link>
       </div>
     )
@@ -29,7 +29,7 @@ export default function BankPage() {
     <div className="fade-up mx-auto max-w-4xl">
       <nav className="mb-4 flex items-center gap-1 text-sm text-[var(--ink-faint)]">
         <Link to="/" className="inline-flex items-center gap-1 hover:text-[var(--ink)]">
-          <IconHome size={14} /> Home
+          <IconHome size={14} /> Home <span className="text-[var(--ink-faint)]">الرئيسية</span>
         </Link>
         <IconChevronRight size={13} />
         <span className="text-[var(--ink)]">{bank.title}</span>
@@ -39,7 +39,7 @@ export default function BankPage() {
         <h1 className="text-3xl font-bold">{bank.title}</h1>
         <p className="mt-2 max-w-2xl text-[15px] text-[var(--ink-soft)]">{bank.description}</p>
         <p className="mt-1 text-sm text-[var(--ink-faint)]">
-          pages {bank.pages[0]}{'\u2013'}{bank.pages[1]}
+          Pages {bank.pages[0]}{'\u2013'}{bank.pages[1]} <span>صفحات</span>
         </p>
       </header>
 

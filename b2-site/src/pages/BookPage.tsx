@@ -24,7 +24,7 @@ export default function BookPage() {
         <span>
           {BOOK.title} {'\u00b7'} Level {BOOK.level}
         </span>
-        <span className="rh-right">Contents of the book</span>
+        <span className="rh-right">Contents · المحتويات</span>
       </div>
 
       <header className="title-page mx-auto max-w-xl pb-8">
@@ -33,14 +33,14 @@ export default function BookPage() {
         </p>
         <h1 className="display mt-3 text-4xl tracking-tight sm:text-5xl">{BOOK.title}</h1>
         <p className="mt-3 text-sm leading-relaxed text-[var(--ink-soft)]">
-          {BOOK.authors.join(' \u2022 ')} {'\u00b7'} One course companion for every lesson, review and bank.
+          {BOOK.authors.join(' \u2022 ')} {'\u00b7'} Course companion · رفيق الدورة
         </p>
       </header>
 
       <section className="flex flex-col items-center gap-3 py-8">
         <CoverStack covers={deckCovers} />
         <p className="text-[11px] uppercase tracking-[0.2em] text-[var(--ink-faint)]">
-          Hover to fan the chapters {'\u00b7'} click a cover to open it
+          Click a cover to open · اضغط لفتح الوحدة
         </p>
       </section>
 
@@ -105,9 +105,9 @@ export default function BookPage() {
       <section className="mt-8 border-t border-[var(--line)] pt-5">
         <div className="flex items-baseline gap-3">
           <IconLayers size={14} className="shrink-0 self-center text-[var(--ink-faint)]" />
-          <h2 className="font-display text-lg font-semibold tracking-tight">Reference banks</h2>
+          <h2 className="font-display text-lg font-semibold tracking-tight">Banks <span className="text-sm font-normal text-[var(--ink-faint)]">البنوك المرجعية</span></h2>
           <span className="toc-dots" aria-hidden />
-          <span className="toc-page">back of the book</span>
+          <span className="toc-page">ref</span>
         </div>
         <ul className="mt-2 space-y-0.5">
           {BOOK.banks.map((bank) => (

@@ -26,7 +26,7 @@ export default function Header({ onContents }: { onContents: () => void }) {
           className="inline-flex items-center gap-2 rounded-lg border border-[var(--line-strong)] px-2.5 py-2 text-sm font-medium text-[var(--ink-soft)] transition-colors hover:bg-[var(--line)]"
         >
           <IconList size={16} />
-          <span className="hidden sm:inline">Contents</span>
+          <span className="hidden sm:inline">Contents <span className="text-[11px] font-normal text-[var(--ink-faint)]">المحتويات</span></span>
         </button>
 
         <Link to="/" className="flex min-w-0 items-baseline justify-center gap-2 truncate">

@@ -13,7 +13,7 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
   return (
     <nav className="px-5 py-6">
       <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.22em] text-[var(--ink-faint)]">
-        Contents of the book
+        Contents <span className="font-normal normal-case tracking-normal">المحتويات</span>
       </p>
       <div className="mb-5">
         <BookProgress />
@@ -33,9 +33,9 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
             <IconFlame size={16} />
           </span>
           <span className="min-w-0 flex-1">
-            <span className="block text-sm font-bold leading-tight">Review the book</span>
+            <span className="block text-sm font-bold leading-tight">Review <span className="font-normal">مراجعة</span></span>
             <span className={`block text-[11px] leading-tight ${reviewActive ? 'text-white/75' : 'text-[var(--ink-faint)]'}`}>
-              B2 review lessons and reference banks
+              دروس المراجعة والبنوك
             </span>
           </span>
         </NavLink>
@@ -43,9 +43,9 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
 
       <div className="mb-1 flex items-baseline gap-2 pb-1">
         <IconBook size={13} className="shrink-0 self-center text-[var(--ink-faint)]" />
-        <span className="truncate font-semibold">This course</span>
+        <span className="truncate font-semibold">Course <span className="font-normal text-[var(--ink-faint)]">الدورة</span></span>
         <span className="toc-dots" aria-hidden />
-        <span className="toc-page">book map</span>
+        <span className="toc-page">map</span>
       </div>
       <NavLink
         to="/book"
@@ -58,7 +58,7 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
           }`
         }
       >
-        Open the full contents of this course, unit by unit.
+        عرض كل الوحدات والدروس <span className="text-[var(--ink-faint)]">· Browse all units</span>
       </NavLink>
 
       <div className="space-y-5">
@@ -138,9 +138,9 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
           }
         >
           <span className="font-display text-lg font-bold leading-none tracking-tight">A</span>
-          <span className="truncate text-[13px] font-semibold">Reference banks</span>
+          <span className="truncate text-[13px] font-semibold">Banks <span className="font-normal text-[var(--ink-faint)]">البنوك المرجعية</span></span>
           <span className="toc-dots" aria-hidden />
-          <span className="toc-page">back</span>
+          <span className="toc-page">ref</span>
         </NavLink>
         <div className="mt-1.5 space-y-0.5 border-l border-[var(--line)] pl-3">
           {BOOK.banks.map((bank) => (
@@ -167,7 +167,7 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
 
       <div className="mt-6 flex items-center gap-2 border-t border-[var(--line)] pt-4 text-[11px] text-[var(--ink-faint)]">
         <IconLayers size={13} />
-        Speakout 3rd Edition · Level B2
+        Speakout 3rd Edition · Level B2 · المستوى B2
       </div>
     </nav>
   )

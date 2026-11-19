@@ -83,10 +83,14 @@ export default function HomePage() {
             className="page-turn bg-brand-600 text-white hover:text-white"
           >
             <IconBook size={16} />
-            {continueTarget ? 'Continue reading' : 'Start reading'}
+            {continueTarget ? (
+              <span>Continue <span className="text-white/80 font-normal">متابعة</span></span>
+            ) : (
+              <span>Start <span className="text-white/80 font-normal">ابدأ</span></span>
+            )}
           </Link>
           <Link to="/book" className="page-turn">
-            Contents of this course
+            <span>Contents <span className="text-[var(--ink-faint)] font-normal">المحتويات</span></span>
           </Link>
         </div>
 
@@ -98,20 +102,20 @@ export default function HomePage() {
               </span>
               <span className="inline-flex items-center gap-1.5 font-semibold text-[var(--ink-soft)]">
                 <IconFlame size={14} className="text-orange-500" />
-                {progress.state.streak} day{progress.state.streak === 1 ? '' : 's'} streak
+                {progress.state.streak} {progress.state.streak === 1 ? 'day' : 'days'} <span className="font-normal text-[var(--ink-faint)]">سلسلة</span>
               </span>
             </div>
             <p className="mt-3 flex items-center justify-between text-xs text-[var(--ink-faint)]">
-              <span className="font-medium">{progress.state.xp} XP</span>
+              <span className="font-medium">{progress.state.xp} XP <span className="font-normal">نقاط</span></span>
               <span>
-                {lp.current}/{lp.target} to level {lp.level + 1}
+                {lp.current}/{lp.target} → L{lp.level + 1}
               </span>
             </p>
             <div className="mt-1.5">
               <AnimatedBar value={lp.pct} className="h-2.5" bar="bg-gradient-to-r from-brand-500 via-accent-500 to-warm-500" />
             </div>
             <p className="mt-3 text-[11px] text-[var(--ink-faint)]">
-              {doneCount} of {lessons.length} lessons {'\u00b7'} {pct}% of the course
+              {doneCount}/{lessons.length} lessons · {pct}% <span>من الدورة</span>
             </p>
             <button
               type="button"
@@ -120,7 +124,7 @@ export default function HomePage() {
               className="tactile mt-3 inline-flex w-full items-center justify-center gap-1.5 rounded-xl border border-brand-300 bg-brand-50 px-3 py-2 text-xs font-bold text-brand-800 transition-colors hover:bg-brand-100 disabled:opacity-60 dark:border-brand-800 dark:bg-brand-950 dark:text-brand-200 dark:hover:bg-brand-900"
             >
               <IconShare size={14} />
-              {sharing ? 'Preparing your card\u2026' : 'Share today\u2019s card'}
+              {sharing ? 'Preparing…' : 'Share card · مشاركة'}
             </button>
           </div>
         </div>
@@ -137,14 +141,14 @@ export default function HomePage() {
           </span>
           <span className="min-w-0 flex-1">
             <span className="block text-lg font-bold tracking-tight text-brand-800 dark:text-brand-200">
-              Review the B2 book
+              Review <span className="font-normal">مراجعة الكتاب</span>
             </span>
             <span className="block text-[13px] leading-snug text-[var(--ink-soft)]">
-              Revisit each unit’s review lesson, grammar reference and vocabulary bank.
+              دروس المراجعة والقواعد والمفردات · Unit reviews & banks
             </span>
           </span>
           <span className="shrink-0 rounded-full bg-brand-600 px-3 py-1.5 text-xs font-bold text-white transition-transform group-hover:translate-x-0.5">
-            Open review
+            Open · فتح
           </span>
         </Link>
       </section>
@@ -157,8 +161,8 @@ export default function HomePage() {
       {/* ---- 3. Achievements ---- */}
       <section>
         <div className="mb-4 flex items-baseline justify-between">
-          <h2 className="display text-2xl tracking-tight">Achievements</h2>
-          <span className="section-label">{earnedCount}/{achievements.length} unlocked</span>
+          <h2 className="display text-2xl tracking-tight">Achievements <span className="text-base font-normal text-[var(--ink-faint)]">الإنجازات</span></h2>
+          <span className="section-label">{earnedCount}/{achievements.length} <span className="normal-case tracking-normal">مفتوح</span></span>
         </div>
         <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3 lg:grid-cols-5">
           {achievements.map((a, i) => (
@@ -189,7 +193,7 @@ export default function HomePage() {
           <span>
             {BOOK.title} {'\u00b7'} Level {BOOK.level}
           </span>
-          <span className="rh-right">Contents</span>
+          <span className="rh-right">Contents · المحتويات</span>
         </div>
 
         <ol className="space-y-3">
@@ -254,9 +258,9 @@ export default function HomePage() {
         <div className="mt-8 border-t border-[var(--line)] pt-5">
           <div className="flex items-baseline gap-3">
             <IconLayers size={14} className="shrink-0 self-center text-[var(--ink-faint)]" />
-            <span className="font-display text-lg font-semibold tracking-tight">Reference banks</span>
+            <span className="font-display text-lg font-semibold tracking-tight">Banks <span className="text-sm font-normal text-[var(--ink-faint)]">البنوك المرجعية</span></span>
             <span className="toc-dots" aria-hidden />
-            <span className="toc-page">back</span>
+            <span className="toc-page">ref</span>
           </div>
           <ul className="mt-2 space-y-0.5">
             {BOOK.banks.map((bank) => (

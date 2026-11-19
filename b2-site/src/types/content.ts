@@ -115,6 +115,8 @@ export interface Exercise {
 export interface VocabItem {
   word: string
   meaning?: string
+  /** Arabic translation / meaning for learners (UI helper, not book content) */
+  translation?: string
   example?: string
   pronunciation?: string
   note?: string

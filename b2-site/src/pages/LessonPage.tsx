@@ -113,7 +113,7 @@ function TableOfContents({ lesson }: { lesson: { blocks: { type: string; title?:
 
   return (
     <nav className="mb-6 rounded-xl border border-[var(--line)] bg-[var(--surface)] p-3">
-      <p className="mb-2 text-[11px] font-bold uppercase tracking-widest text-[var(--ink-faint)]">On this page</p>
+      <p className="mb-2 text-[11px] font-bold uppercase tracking-widest text-[var(--ink-faint)]">On this page <span className="font-normal normal-case tracking-normal">في هذه الصفحة</span></p>
       <div className="flex flex-wrap gap-1.5">
         {sections.map((s) => (
           <button
@@ -168,9 +168,9 @@ export default function LessonPage() {
   if (!unit || !lesson || !unitId) {
     return (
       <div className="rounded-xl border border-[var(--line)] bg-[var(--surface)] p-8 text-center">
-        <p className="text-[var(--ink-soft)]">Lesson not found.</p>
+        <p className="text-[var(--ink-soft)]">Lesson not found. <span className="text-[var(--ink-faint)]">الدرس غير موجود</span></p>
         <Link to="/book" className="mt-2 inline-block text-sm font-medium text-brand-600">
-          Back to the book map
+          Back to contents · العودة للمحتويات
         </Link>
       </div>
     )
@@ -212,7 +212,7 @@ export default function LessonPage() {
 
       <nav className="mb-4 flex flex-wrap items-center gap-1 text-sm text-[var(--ink-faint)]">
         <Link to="/" className="inline-flex items-center gap-1 hover:text-[var(--ink)]">
-          <IconHome size={14} /> Home
+          <IconHome size={14} /> Home <span className="text-[var(--ink-faint)]">الرئيسية</span>
         </Link>
         <IconChevronRight size={13} className="text-[var(--ink-faint)]" />
         <Link to={`/unit/${unit.id}`} className="hover:text-[var(--ink)]">
@@ -272,7 +272,7 @@ export default function LessonPage() {
           <div className="mt-5 rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-5">
             <p className="mb-3 flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em] text-[var(--ink-faint)]">
               <span aria-hidden className="size-1.5 rounded-full bg-brand-500" />
-              What you{'\u2019'}ll learn
+              What you{'\u2019'}ll learn <span className="font-normal normal-case tracking-normal">ماذا ستتعلم</span>
             </p>
             <ul className="space-y-2.5">
               {lesson.objectives.map((o, i) => (
@@ -290,16 +290,16 @@ export default function LessonPage() {
         <div className="mt-4 flex flex-wrap items-center gap-3 text-xs text-[var(--ink-faint)]">
           {hasAudio && (
             <span className="inline-flex items-center gap-1">
-              <IconVolume size={13} /> Audio
+              <IconVolume size={13} /> Audio <span className="text-[var(--ink-faint)]">صوت</span>
             </span>
           )}
           {hasVideo && (
             <span className="inline-flex items-center gap-1">
-              <IconVideo size={13} /> Video
+              <IconVideo size={13} /> Video <span className="text-[var(--ink-faint)]">فيديو</span>
             </span>
           )}
           <span className="inline-flex items-center gap-1 rounded-full border border-[var(--line)] px-2 py-0.5">
-            {readingMinutes} min read
+            {readingMinutes} min <span className="text-[var(--ink-faint)]">دقيقة</span>
           </span>
           <button
             type="button"
@@ -310,7 +310,7 @@ export default function LessonPage() {
                 : 'border-[var(--line-strong)] text-[var(--ink-soft)] hover:border-brand-400'
             }`}
           >
-            {complete ? '\u2713 Completed' : 'Mark as done'}
+            {complete ? '\u2713 Done · تم' : 'Mark done · تحديد كمكتمل'}
           </button>
         </div>
       </header>
@@ -324,19 +324,19 @@ export default function LessonPage() {
           <div>
             <p className="mb-1.5 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em] text-brand-700 dark:text-brand-300">
               <span aria-hidden className="size-1.5 rounded-full bg-brand-500" />
-              Chapter checkpoint
+              Checkpoint <span className="font-normal normal-case tracking-normal">نقطة إنجاز</span>
             </p>
             <h2 className="display mt-1 text-2xl tracking-tight">
-              {complete ? 'Chapter completed' : 'Ready to finish this chapter?'}
+              {complete ? 'Lesson done · تم الدرس' : 'Finish lesson? · إنهاء الدرس؟'}
             </h2>
             <p className="mt-1.5 text-sm text-[var(--ink-soft)]">
-              {complete ? 'Your progress has been saved on this device.' : 'Mark it complete when you feel confident with this lesson.'}
+              {complete ? 'Progress saved on this device. تم الحفظ على هذا الجهاز.' : 'Mark complete when ready. حدّد كمكتمل عند الانتهاء.'}
             </p>
           </div>
           <div className="flex flex-wrap gap-2">
             {complete ? (
               <span className="pop inline-flex items-center gap-1.5 rounded-full bg-brand-600 px-4 py-2 text-sm font-bold text-white">
-                <IconCheck size={15} /> Completed
+                <IconCheck size={15} /> Done · تم
               </span>
             ) : (
               <button
@@ -344,7 +344,7 @@ export default function LessonPage() {
                 onClick={onToggleDone}
                 className="inline-flex items-center gap-1.5 rounded-full bg-brand-600 px-4 py-2 text-sm font-bold text-white shadow-sm transition-all hover:bg-brand-700 hover:shadow-md"
               >
-                <IconCheck size={15} /> Mark complete
+                <IconCheck size={15} /> Mark complete · إكمال
               </button>
             )}
             {navData.next?.unitId && navData.next.lessonId && (
@@ -352,7 +352,7 @@ export default function LessonPage() {
                 to={`/unit/${navData.next.unitId}/lesson/${navData.next.lessonId}`}
                 className="inline-flex items-center gap-1.5 rounded-full border border-brand-300 bg-white px-4 py-2 text-sm font-semibold text-brand-700 shadow-sm transition-all hover:-translate-y-0.5 hover:bg-brand-600 hover:text-white dark:border-brand-800 dark:bg-brand-950 dark:text-brand-200 dark:hover:bg-brand-700"
               >
-                Continue <IconChevronRight size={15} />
+                Next · التالي <IconChevronRight size={15} />
               </Link>
             )}
           </div>
@@ -371,13 +371,13 @@ export default function LessonPage() {
           to={`/unit/${unit.id}`}
           className="page-turn"
         >
-          <IconChevronLeft size={14} /> Back to {label}
+          <IconChevronLeft size={14} /> Back to {label} <span className="text-[var(--ink-faint)]">عودة</span>
         </Link>
       </div>
 
       <PrevNext unitId={unit.id} lessonId={lesson.id} />
       <p className="mt-3 text-center text-[11px] text-[var(--ink-faint)]">
-        Tip: use the {'\u2190'} and {'\u2192'} arrow keys to move between lessons
+        Tip: ← → keys to move between lessons · مفاتيح الأسهم للتنقل
       </p>
     </div>
   )

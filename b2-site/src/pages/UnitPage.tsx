@@ -15,9 +15,9 @@ function LessonPreview({ lesson }: { lesson: { title: string; pages: [number, nu
   const audio = lesson.blocks.filter((b) => b.type === 'audio').reduce((n, b) => n + (b.tracks?.length ?? 0), 0)
   return (
     <div className="rise rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-4 shadow-2xl">
-      <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--ink-faint)]">Lesson preview</p>
+      <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--ink-faint)]">Preview <span className="font-normal normal-case tracking-normal">معاينة</span></p>
       <h3 className="mt-1 text-lg font-bold">{lesson.title}</h3>
-      <p className="page-number mt-1">Pages {lesson.pages[0]}{'\u2013'}{lesson.pages[1]}</p>
+      <p className="page-number mt-1">Pages {lesson.pages[0]}{'\u2013'}{lesson.pages[1]} <span className="text-[var(--ink-faint)]">صفحات</span></p>
       {lesson.labels && (
         <p className="mt-2 flex flex-wrap gap-1.5">
           {lesson.labels.grammar && (
@@ -48,20 +48,20 @@ function LessonPreview({ lesson }: { lesson: { title: string; pages: [number, nu
         </ul>
       )}
       <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-[11px] text-[var(--ink-faint)]">
-        {exercises > 0 && <span>{exercises} exercise{exercises > 1 ? 's' : ''}</span>}
+        {exercises > 0 && <span>{exercises} exercise{exercises > 1 ? 's' : ''} <span>تمارين</span></span>}
         {audio > 0 && (
           <span className="inline-flex items-center gap-1">
-            <IconVolume size={11} /> {audio} track{audio > 1 ? 's' : ''}
+            <IconVolume size={11} /> {audio} <span>صوت</span>
           </span>
         )}
         {videos > 0 && (
           <span className="inline-flex items-center gap-1 text-accent-600">
-            <IconVideo size={11} /> {videos} video{videos > 1 ? 's' : ''}
+            <IconVideo size={11} /> {videos} <span>فيديو</span>
           </span>
         )}
       </div>
       <p className="mt-3 border-t border-[var(--line)] pt-2 text-[11px] text-brand-700 dark:text-brand-300">
-        Hover to peek {'\u00b7'} Enter to open {'\u2192'}
+        Click to open · اضغط للفتح
       </p>
     </div>
   )
@@ -95,7 +95,7 @@ export default function UnitPage() {
 
       <nav className="flex items-center gap-1 text-sm text-[var(--ink-faint)]">
         <Link to="/" className="inline-flex items-center gap-1 hover:text-[var(--ink)]">
-          <IconHome size={14} /> Home
+          <IconHome size={14} /> Home <span className="text-[var(--ink-faint)]">الرئيسية</span>
         </Link>
         <IconChevronRight size={13} />
         <span className="text-[var(--ink)]">{label}</span>
@@ -121,7 +121,7 @@ export default function UnitPage() {
             <div className="mt-5 rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-5">
               <p className="mb-3 flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em] text-[var(--ink-faint)]">
                 <span aria-hidden className="size-1.5 rounded-full bg-brand-500" />
-                Unit objectives
+                Objectives <span className="font-normal normal-case tracking-normal">أهداف الوحدة</span>
               </p>
               <ul className="space-y-2">
                 {unit.objectives.map((o, i) => (
@@ -138,7 +138,7 @@ export default function UnitPage() {
 
           <div className="mt-5 max-w-xs">
             <div className="mb-1.5 flex justify-between text-xs text-[var(--ink-faint)]">
-              <span className="font-medium">Progress</span>
+              <span className="font-medium">Progress <span className="font-normal">التقدم</span></span>
               <span className="font-semibold text-brand-700 dark:text-brand-300">
                 {done}/{unit.lessons.length} ({pct}%)
               </span>
@@ -156,7 +156,7 @@ export default function UnitPage() {
       <div className="section-divider">
         <span>
           <IconList size={12} className="mr-1 inline" />
-          In this chapter
+          Lessons <span className="font-normal normal-case tracking-normal">الدروس</span>
         </span>
       </div>
 
@@ -165,7 +165,7 @@ export default function UnitPage() {
           <div className="section-divider">
             <span>
               <IconVideo size={12} className="mr-1 inline" />
-              BBC video
+              BBC video <span className="font-normal normal-case tracking-normal">فيديو</span>
             </span>
           </div>
           <div className="grid gap-3 sm:grid-cols-2">
@@ -229,7 +229,7 @@ export default function UnitPage() {
             className="page-corner tactile group flex items-center gap-4 rounded-2xl border border-[var(--line-strong)] bg-[var(--surface)] p-4 transition-all hover:border-brand-400 hover:shadow-sm"
           >
             <span className="min-w-0 flex-1">
-              <span className="text-[11px] font-bold uppercase tracking-widest text-[var(--ink-faint)]">Next unit</span>
+              <span className="text-[11px] font-bold uppercase tracking-widest text-[var(--ink-faint)]">Next <span className="font-normal normal-case tracking-normal">التالي</span></span>
               <span className="mt-0.5 block truncate font-semibold">
                 {unitLabel(nextUnit)}: {nextUnit.phrase ?? nextUnit.title}
               </span>

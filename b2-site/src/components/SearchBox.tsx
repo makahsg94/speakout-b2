@@ -77,7 +77,7 @@ export default function SearchBox({ onOpenChange }: { onOpenChange?: (open: bool
             if (!e.target.value) setHits([])
           }}
           onFocus={() => setOpen(true)}
-          placeholder={'Search\u2026'}
+          placeholder={'Search… بحث'}
           className="w-full rounded-full border border-[var(--line-strong)] bg-[var(--surface)] py-2 pl-9 pr-3 text-sm text-[var(--ink)] placeholder:text-[var(--ink-faint)] focus:border-brand-500 sm:pr-16"
         />
         {query ? (
@@ -102,25 +102,25 @@ export default function SearchBox({ onOpenChange }: { onOpenChange?: (open: bool
       {open && query.trim() && (
         <div className="absolute left-0 right-0 top-11 z-40 max-h-[70vh] overflow-y-auto rounded-xl border border-[var(--line-strong)] bg-[var(--surface)] py-2 shadow-xl scrollbar-thin">
           {grouped.lessons.length === 0 && grouped.pages.length === 0 && grouped.banks.length === 0 ? (
-            <p className="px-4 py-3 text-sm text-[var(--ink-faint)]">No results for {'\u201c'}{query}{'\u201d'}.</p>
+            <p className="px-4 py-3 text-sm text-[var(--ink-faint)]">No results · لا توجد نتائج لـ {'\u201c'}{query}{'\u201d'}</p>
           ) : (
             <>
               {grouped.lessons.length > 0 && (
-                <Group title="Lessons">
+                <Group title="Lessons · الدروس">
                   {grouped.lessons.map((h) => (
                     <Hit key={h.url} hit={h} onGo={go} />
                   ))}
                 </Group>
               )}
               {grouped.pages.length > 0 && (
-                <Group title="Book pages">
+                <Group title="Pages · الصفحات">
                   {grouped.pages.map((h) => (
                     <Hit key={h.url} hit={h} onGo={go} />
                   ))}
                 </Group>
               )}
               {grouped.banks.length > 0 && (
-                <Group title="Banks">
+                <Group title="Banks · البنوك">
                   {grouped.banks.map((h) => (
                     <Hit key={h.url} hit={h} onGo={go} />
                   ))}
