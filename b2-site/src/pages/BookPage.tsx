@@ -40,7 +40,7 @@ export default function BookPage() {
       <section className="flex flex-col items-center gap-3 py-8">
         <CoverStack covers={deckCovers} />
         <p className="text-[11px] uppercase tracking-[0.2em] text-[var(--ink-faint)]">
-          Click a cover to open · اضغط لفتح الوحدة
+          Click a cover to open · اضغط للفتح
         </p>
       </section>
 
@@ -107,7 +107,6 @@ export default function BookPage() {
           <IconLayers size={14} className="shrink-0 self-center text-[var(--ink-faint)]" />
           <h2 className="font-display text-lg font-semibold tracking-tight">Banks <span className="text-sm font-normal text-[var(--ink-faint)]">البنوك المرجعية</span></h2>
           <span className="toc-dots" aria-hidden />
-          <span className="toc-page">ref</span>
         </div>
         <ul className="mt-2 space-y-0.5">
           {BOOK.banks.map((bank) => (

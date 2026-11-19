@@ -43,9 +43,7 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
 
       <div className="mb-1 flex items-baseline gap-2 pb-1">
         <IconBook size={13} className="shrink-0 self-center text-[var(--ink-faint)]" />
-        <span className="truncate font-semibold">Course <span className="font-normal text-[var(--ink-faint)]">الدورة</span></span>
-        <span className="toc-dots" aria-hidden />
-        <span className="toc-page">map</span>
+        <span className="truncate font-semibold">Course · الدورة</span>
       </div>
       <NavLink
         to="/book"
@@ -58,7 +56,7 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
           }`
         }
       >
-        عرض كل الوحدات والدروس <span className="text-[var(--ink-faint)]">· Browse all units</span>
+        Browse all units · كل الوحدات
       </NavLink>
 
       <div className="space-y-5">
@@ -138,9 +136,7 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
           }
         >
           <span className="font-display text-lg font-bold leading-none tracking-tight">A</span>
-          <span className="truncate text-[13px] font-semibold">Banks <span className="font-normal text-[var(--ink-faint)]">البنوك المرجعية</span></span>
-          <span className="toc-dots" aria-hidden />
-          <span className="toc-page">ref</span>
+          <span className="truncate text-[13px] font-semibold">Banks · البنوك</span>
         </NavLink>
         <div className="mt-1.5 space-y-0.5 border-l border-[var(--line)] pl-3">
           {BOOK.banks.map((bank) => (

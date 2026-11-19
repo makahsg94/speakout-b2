@@ -110,7 +110,7 @@ export function AudioPlayer({ tracks, title }: { tracks: AudioTrack[]; title?: s
                     )}
                   </span>
                 </span>
-                {t.page && <span className="shrink-0 text-xs text-[var(--ink-faint)]">p.{t.page} <span>ص</span></span>}
+                {t.page && <span className="shrink-0 text-xs text-[var(--ink-faint)]">p. {t.page}</span>}
               </button>
 
               {mine && (

@@ -29,7 +29,7 @@ export default function BankPage() {
     <div className="fade-up mx-auto max-w-4xl">
       <nav className="mb-4 flex items-center gap-1 text-sm text-[var(--ink-faint)]">
         <Link to="/" className="inline-flex items-center gap-1 hover:text-[var(--ink)]">
-          <IconHome size={14} /> Home <span className="text-[var(--ink-faint)]">الرئيسية</span>
+          <IconHome size={14} /> Home
         </Link>
         <IconChevronRight size={13} />
         <span className="text-[var(--ink)]">{bank.title}</span>
@@ -39,7 +39,7 @@ export default function BankPage() {
         <h1 className="text-3xl font-bold">{bank.title}</h1>
         <p className="mt-2 max-w-2xl text-[15px] text-[var(--ink-soft)]">{bank.description}</p>
         <p className="mt-1 text-sm text-[var(--ink-faint)]">
-          Pages {bank.pages[0]}{'\u2013'}{bank.pages[1]} <span>صفحات</span>
+          pp. {bank.pages[0]}{'\u2013'}{bank.pages[1]}
         </p>
       </header>
 

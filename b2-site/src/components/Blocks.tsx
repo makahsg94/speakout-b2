@@ -23,7 +23,7 @@ function BankLink({ page }: { page: number }) {
       className="mt-2 inline-flex items-center gap-1.5 rounded-full bg-brand-600 px-3 py-1 text-xs font-semibold text-white transition-all hover:bg-brand-700 hover:shadow-sm"
     >
       <IconTarget size={13} />
-      Grammar Bank <span className="font-normal opacity-90">بنك القواعد</span> · p.{page}
+      Grammar Bank · بنك القواعد (p. {page})
       <IconChevronRight size={13} />
     </Link>
   )
@@ -118,7 +118,7 @@ function ReadingPanel({
             <h2 className="display mt-2.5 text-2xl tracking-tight sm:text-[1.7rem]">{title}</h2>
           </div>
           <span className="shrink-0 rounded-full border border-[var(--line)] bg-[var(--bg)] px-2.5 py-1 text-[11px] font-medium tabular-nums text-[var(--ink-faint)]">
-            {'\u2248'} {total} words
+            ~{total} words
           </span>
         </header>
         <div className="reading-body">
@@ -130,7 +130,7 @@ function ReadingPanel({
         </div>
         <span className="reading-rule" aria-hidden />
         <p className="study-tip">
-          Study tip: read it once for the main idea, then again for the details
+          Tip · نصيحة: اقرأ للفكرة العامة ثم للتفاصيل
         </p>
       </div>
     </section>
@@ -196,48 +196,46 @@ function VocabSection({
 
   return (
     <section id={id}>
-      <div className="mb-3 mt-8 flex flex-wrap items-center gap-2.5">
+      <div className="mb-3 mt-8 flex flex-wrap items-end justify-between gap-2">
         <div className="min-w-0">
           <h2 className="flex items-center gap-2 text-xl font-bold">
             <span className="h-6 w-1 rounded-full bg-gradient-to-b from-accent-500 to-brand-500" />
             {block.title}
           </h2>
-          <p className="mt-0.5 text-[12px] text-[var(--ink-faint)]">المفردات · اضغط US/UK لسماع النطق</p>
+          <p className="mt-0.5 text-[12px] text-[var(--ink-faint)]">Vocabulary · مفردات (US/UK للنطق)</p>
         </div>
         <button
           type="button"
           onClick={togglePractice}
           aria-pressed={practice}
-          className={`ml-auto inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-semibold transition-colors ${
+          className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-semibold transition-colors ${
             practice
               ? 'border-brand-500 bg-brand-600 text-white'
               : 'border-[var(--line-strong)] text-[var(--ink-soft)] hover:border-brand-400'
           }`}
         >
-          {practice ? 'Exit practice / إنهاء التدريب' : 'Practice / تدريب (إخفاء المعنى)'}
+          {practice ? 'List · القائمة' : 'Practice · تدريب'}
         </button>
       </div>
 
       {!practice ? (
         <div className="overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--surface)]">
-          <div className="hidden border-b border-[var(--line)] bg-[var(--line)]/50 px-4 py-2 sm:grid sm:grid-cols-[1.2fr_1fr_1fr_1.6fr] sm:gap-3">
-            <span className="text-[11px] font-bold uppercase tracking-widest text-[var(--ink-faint)]">Word <span className="font-normal normal-case">الكلمة</span></span>
-            <span className="text-[11px] font-bold uppercase tracking-widest text-[var(--ink-faint)]">Meaning <span className="font-normal normal-case">المعنى</span></span>
-            <span className="text-[11px] font-bold uppercase tracking-widest text-[var(--ink-faint)]">Arabic <span className="font-normal normal-case">بالعربي</span></span>
-            <span className="text-[11px] font-bold uppercase tracking-widest text-[var(--ink-faint)]">Example / Note <span className="font-normal normal-case">مثال/ملاحظة</span></span>
+          <div className="hidden border-b border-[var(--line)] bg-[var(--line)]/50 px-4 py-2 sm:grid sm:grid-cols-[1.15fr_1.15fr_1.7fr] sm:gap-4">
+            <span className="text-[11px] font-bold uppercase tracking-widest text-[var(--ink-faint)]">Word · الكلمة</span>
+            <span className="text-[11px] font-bold uppercase tracking-widest text-[var(--ink-faint)]">Meaning · المعنى</span>
+            <span className="text-[11px] font-bold uppercase tracking-widest text-[var(--ink-faint)]">Example / Note · مثال</span>
           </div>
           <div className="divide-y divide-[var(--line)]">
             {items.map((item, j) => (
               <div
                 key={j}
-                className="group grid gap-1 px-4 py-3 transition-colors hover:bg-[var(--line)]/30 sm:grid-cols-[1.2fr_1fr_1fr_1.6fr] sm:items-start sm:gap-3"
+                className="group grid gap-2 px-4 py-3 transition-colors hover:bg-[var(--line)]/30 sm:grid-cols-[1.15fr_1.15fr_1.7fr] sm:items-start sm:gap-4"
               >
                 <div className="min-w-0">
                   <span className="text-[15px] font-semibold text-brand-800 dark:text-brand-200">{item.word}</span>
                   {item.opposite && (
                     <span className="ml-2 text-xs text-[var(--ink-faint)]">
-                      opp.{' '}
-                      <span className="font-medium text-accent-600 dark:text-accent-400">{item.opposite}</span>
+                      opp. <span className="font-medium text-accent-600 dark:text-accent-400">{item.opposite}</span>
                     </span>
                   )}
                   {item.pronunciation && (
@@ -247,8 +245,12 @@ function VocabSection({
                     <Pronounce text={item.word} />
                   </div>
                 </div>
-                <div className="min-w-0 text-sm text-[var(--ink-soft)]">{item.meaning || '—'}</div>
-                <div className="min-w-0 text-sm text-[var(--ink)]" dir="rtl" lang="ar">{item.translation || '—'}</div>
+                <div className="min-w-0 space-y-0.5 text-sm">
+                  <p className="text-[var(--ink-soft)]">{item.meaning || '—'}</p>
+                  {item.translation && (
+                    <p className="text-[var(--ink)]" dir="rtl" lang="ar">{item.translation}</p>
+                  )}
+                </div>
                 <div className="min-w-0 space-y-1">
                   {item.example && (
                     <p className="text-[13px] italic text-[var(--ink-faint)]">
@@ -260,9 +262,7 @@ function VocabSection({
                       {'\u2192'} {item.response}
                     </p>
                   )}
-                  {item.note && (
-                    <p className="text-[12px] text-[var(--ink-faint)]">{item.note}</p>
-                  )}
+                  {item.note && <p className="text-[12px] text-[var(--ink-faint)]">{item.note}</p>}
                 </div>
               </div>
             ))}
@@ -271,7 +271,7 @@ function VocabSection({
       ) : (
         <div className="overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-3">
           <p className="mb-3 flex flex-wrap items-center justify-between gap-2 text-xs text-[var(--ink-faint)]">
-            <span>اضغط البطاقة لإظهار المعنى · حاول تتذكره أولاً</span>
+            <span>اضغط لإظهار المعنى · Tap to reveal</span>
             <span
               className={`rounded-full px-2.5 py-0.5 font-semibold ${
                 known === items.length && items.length > 0
@@ -283,32 +283,35 @@ function VocabSection({
             </span>
           </p>
           <div className="grid gap-2 sm:grid-cols-2">
-            {items.map((item, j) => (
-              <button
-                key={j}
-                type="button"
-                onClick={() => toggleReveal(j)}
-                aria-pressed={revealed.has(j)}
-                className={`min-h-16 rounded-xl border px-3 py-2.5 text-left transition-colors ${
-                  revealed.has(j)
-                    ? 'border-brand-300 bg-brand-50 dark:border-brand-700 dark:bg-brand-950'
-                    : 'border-[var(--line)] bg-[var(--bg)] hover:border-brand-300'
-                }`}
-              >
-                <span className="block text-[15px] font-semibold text-brand-800 dark:text-brand-200">{item.word}</span>
-                <div className="mt-1">
-                  <Pronounce text={item.word} />
-                </div>
-                {revealed.has(j) ? (
-                  <span className="mt-1 block space-y-0.5">
-                    <span className="block text-[13px] text-[var(--ink-soft)]">{item.meaning || '—'}</span>
-                    {item.translation && <span className="block text-[13px] text-[var(--ink)]" dir="rtl" lang="ar">{item.translation}</span>}
-                  </span>
-                ) : (
-                  <span className="mt-1 block text-[13px] text-[var(--ink-faint)]">اضغط للإظهار / Tap to reveal</span>
-                )}
-              </button>
-            ))}
+            {items.map((item, j) => {
+              const open = revealed.has(j)
+              return (
+                <button
+                  key={j}
+                  type="button"
+                  onClick={() => toggleReveal(j)}
+                  aria-pressed={open}
+                  className={`min-h-16 rounded-xl border px-3 py-2.5 text-left transition-colors ${
+                    open
+                      ? 'border-brand-300 bg-brand-50 dark:border-brand-700 dark:bg-brand-950'
+                      : 'border-[var(--line)] bg-[var(--bg)] hover:border-brand-300'
+                  }`}
+                >
+                  <span className="block text-[15px] font-semibold text-brand-800 dark:text-brand-200">{item.word}</span>
+                  <div className="mt-1">
+                    <Pronounce text={item.word} />
+                  </div>
+                  {open ? (
+                    <span className="mt-1 block space-y-0.5">
+                      <span className="block text-[13px] text-[var(--ink-soft)]">{item.meaning || '—'}</span>
+                      {item.translation && <span className="block text-[13px] text-[var(--ink)]" dir="rtl" lang="ar">{item.translation}</span>}
+                    </span>
+                  ) : (
+                    <span className="mt-1 block text-[13px] text-[var(--ink-faint)]">Reveal · إظهار</span>
+                  )}
+                </button>
+              )
+            })}
           </div>
         </div>
       )}

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { BOOK, flattenLessons, unitGlyph, unitLabel } from '../content/book'
+import { BOOK, flattenLessons } from '../content/book'
 import { useProgress } from '../lib/appContext'
 import { levelProgress, achievementsFor } from '../lib/progress'
 import { shareCardBlob } from '../lib/shareCard'
@@ -8,7 +8,7 @@ import { playSound } from '../lib/sounds'
 import Reveal from '../components/Reveal'
 import AnimatedBar from '../components/AnimatedBar'
 import LineMap from '../components/LineMap'
-import { IconBook, IconCheck, IconFlame, IconLayers, IconShare } from '../components/Icons'
+import { IconBook, IconFlame, IconLayers, IconShare } from '../components/Icons'
 
 export default function HomePage() {
   const progress = useProgress()
@@ -106,16 +106,14 @@ export default function HomePage() {
               </span>
             </div>
             <p className="mt-3 flex items-center justify-between text-xs text-[var(--ink-faint)]">
-              <span className="font-medium">{progress.state.xp} XP <span className="font-normal">نقاط</span></span>
-              <span>
-                {lp.current}/{lp.target} → L{lp.level + 1}
-              </span>
+              <span className="font-medium">{progress.state.xp} XP</span>
+              <span>{lp.current}/{lp.target} to Level {lp.level + 1}</span>
             </p>
             <div className="mt-1.5">
               <AnimatedBar value={lp.pct} className="h-2.5" bar="bg-gradient-to-r from-brand-500 via-accent-500 to-warm-500" />
             </div>
             <p className="mt-3 text-[11px] text-[var(--ink-faint)]">
-              {doneCount}/{lessons.length} lessons · {pct}% <span>من الدورة</span>
+              {doneCount}/{lessons.length} lessons · {pct}% completed
             </p>
             <button
               type="button"
@@ -141,14 +139,14 @@ export default function HomePage() {
           </span>
           <span className="min-w-0 flex-1">
             <span className="block text-lg font-bold tracking-tight text-brand-800 dark:text-brand-200">
-              Review <span className="font-normal">مراجعة الكتاب</span>
+              Review · مراجعة
             </span>
             <span className="block text-[13px] leading-snug text-[var(--ink-soft)]">
-              دروس المراجعة والقواعد والمفردات · Unit reviews & banks
+              Unit reviews, grammar and vocabulary banks
             </span>
           </span>
           <span className="shrink-0 rounded-full bg-brand-600 px-3 py-1.5 text-xs font-bold text-white transition-transform group-hover:translate-x-0.5">
-            Open · فتح
+            Open
           </span>
         </Link>
       </section>
@@ -162,7 +160,7 @@ export default function HomePage() {
       <section>
         <div className="mb-4 flex items-baseline justify-between">
           <h2 className="display text-2xl tracking-tight">Achievements <span className="text-base font-normal text-[var(--ink-faint)]">الإنجازات</span></h2>
-          <span className="section-label">{earnedCount}/{achievements.length} <span className="normal-case tracking-normal">مفتوح</span></span>
+          <span className="section-label">{earnedCount}/{achievements.length}</span>
         </div>
         <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3 lg:grid-cols-5">
           {achievements.map((a, i) => (
@@ -187,96 +185,14 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ---- 3. Printed contents ---- */}
-      <section className="book-page px-6 py-8 sm:px-10">
-        <div className="running-head">
-          <span>
-            {BOOK.title} {'\u00b7'} Level {BOOK.level}
-          </span>
-          <span className="rh-right">Contents · المحتويات</span>
-        </div>
-
-        <ol className="space-y-3">
-          {BOOK.units.map((unit, i) => {
-            const unitDone = unit.lessons.filter((l) => progress.isLessonComplete(l.id)).length
-            const unitPct = Math.round((unitDone / Math.max(1, unit.lessons.length)) * 100)
-            return (
-              <Reveal key={unit.id} delay={i * 40}>
-                <li className="border-b border-[var(--line)] pb-4">
-                  <Link
-                    to={`/unit/${unit.id}`}
-                    className="group flex items-baseline gap-4 py-1"
-                  >
-                    <span className="chapter-num font-display text-5xl leading-none">
-                      {unitGlyph(unit)}
-                    </span>
-                    <span className="min-w-0 flex-1">
-                      <span className="block text-[10px] font-bold uppercase tracking-[0.18em] text-brand-700 dark:text-brand-300">
-                        {unitLabel(unit)}
-                      </span>
-                      <span className="mt-0.5 block truncate font-display text-xl font-semibold tracking-tight group-hover:text-brand-700 dark:group-hover:text-brand-300">
-                        {unit.phrase ?? unit.title}
-                      </span>
-                    </span>
-                    <span className="hidden text-xs text-[var(--ink-faint)] sm:inline">{unitPct}%</span>
-                    <span className="toc-page">{unit.pages[0]}</span>
-                  </Link>
-
-                  <ul className="mt-1.5 space-y-0.5 border-l border-[var(--line)] pl-4">
-                    {unit.lessons.map((lesson) => {
-                      const isDone = progress.isLessonComplete(lesson.id)
-                      return (
-                        <li key={lesson.id}>
-                          <Link
-                            to={`/unit/${unit.id}/lesson/${lesson.id}`}
-                            className="toc-row group truncate text-[13px]"
-                          >
-                            <span className="w-3 shrink-0 text-center text-[10px] leading-none">
-                              {isDone ? (
-                                <IconCheck size={10} className="text-brand-600" />
-                              ) : (
-                                <span className="text-[var(--ink-faint)]">○</span>
-                              )}
-                            </span>
-                            <span className="min-w-0 truncate transition-colors group-hover:text-brand-700 dark:group-hover:text-brand-300">
-                              {lesson.code !== 'Review' ? `${lesson.code} ` : ''}
-                              {lesson.title}
-                            </span>
-                            <span className="toc-dots" aria-hidden />
-                            <span className="toc-page shrink-0">{lesson.pages[0]}</span>
-                          </Link>
-                        </li>
-                      )
-                    })}
-                  </ul>
-                </li>
-              </Reveal>
-            )
-          })}
-        </ol>
-
-        <div className="mt-8 border-t border-[var(--line)] pt-5">
-          <div className="flex items-baseline gap-3">
-            <IconLayers size={14} className="shrink-0 self-center text-[var(--ink-faint)]" />
-            <span className="font-display text-lg font-semibold tracking-tight">Banks <span className="text-sm font-normal text-[var(--ink-faint)]">البنوك المرجعية</span></span>
-            <span className="toc-dots" aria-hidden />
-            <span className="toc-page">ref</span>
-          </div>
-          <ul className="mt-2 space-y-0.5">
-            {BOOK.banks.map((bank) => (
-              <li key={bank.id}>
-                <Link to={`/bank/${bank.id}`} className="toc-row text-[13px]">
-                  <span className="w-3 shrink-0 text-[10px] text-[var(--ink-faint)]">▲</span>
-                  <span className="min-w-0 truncate transition-colors hover:text-brand-700 dark:hover:text-brand-300">
-                    {bank.title}
-                  </span>
-                  <span className="toc-dots" aria-hidden />
-                  <span className="toc-page shrink-0">{bank.pages[0]}</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
+      <section className="mx-auto max-w-2xl text-center">
+        <p className="text-sm text-[var(--ink-soft)]">
+          Browse the full course map in{' '}
+          <Link to="/book" className="font-medium text-brand-700 underline-offset-2 hover:underline dark:text-brand-300">
+            Contents · المحتويات
+          </Link>
+          {' '}or use the sidebar.
+        </p>
       </section>
     </div>
   )

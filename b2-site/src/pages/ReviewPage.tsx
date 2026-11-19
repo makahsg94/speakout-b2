@@ -32,19 +32,17 @@ export default function ReviewPage() {
 
       <nav className="flex items-center gap-1 text-sm text-[var(--ink-faint)]">
         <Link to="/" className="inline-flex items-center gap-1 hover:text-[var(--ink)]">
-          <IconHome size={14} /> Home <span className="text-[var(--ink-faint)]">الرئيسية</span>
+          <IconHome size={14} /> Home
         </Link>
         <IconChevronRight size={13} />
-        <span className="text-[var(--ink)]">Review <span className="text-[var(--ink-faint)]">مراجعة</span></span>
+        <span className="text-[var(--ink)]">Review · مراجعة</span>
       </nav>
 
       <header className="title-page mx-auto max-w-xl text-center">
-        <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-[var(--ink-faint)]">
-          Revision <span className="font-normal normal-case tracking-normal">مراجعة</span>
-        </p>
-        <h1 className="display mt-3 text-4xl tracking-tight sm:text-5xl">Review <span className="text-2xl font-normal text-[var(--ink-faint)] sm:text-3xl">مراجعة B2</span></h1>
+        <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-[var(--ink-faint)]">Revision · مراجعة</p>
+        <h1 className="display mt-3 text-4xl tracking-tight sm:text-5xl">Review B2</h1>
         <p className="mt-4 text-[15px] leading-relaxed text-[var(--ink-soft)]">
-          دروس المراجعة والبنوك المرجعية كما في كتاب الطالب · Unit reviews & reference banks.
+          Unit review lessons and reference banks from the Student’s Book.
         </p>
       </header>
 
@@ -118,8 +116,8 @@ export default function ReviewPage() {
           Note <span className="font-normal normal-case tracking-normal">ملاحظة</span>
         </p>
         <p className="mt-2 text-[14px] leading-relaxed text-[var(--ink-soft)]">
-          لا يتضمن كتاب الطالب مفتاح إجابات، لذا استخدم دروس المراجعة والتسجيلات والبنوك للمراجعة الذاتية.
-          <span className="block mt-1 text-[var(--ink-faint)]">No answer key in the source book — use the review lessons, audio, and banks to self-check.</span>
+          No answer key in the book. Use review lessons, audio, and banks to self-check.
+          <span className="block mt-1 text-[var(--ink-faint)]">لا يوجد مفتاح إجابات — استخدم المراجعة والتسجيلات والبنوك.</span>
         </p>
       </section>
     </div>

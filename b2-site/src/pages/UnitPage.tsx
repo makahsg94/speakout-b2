@@ -17,7 +17,7 @@ function LessonPreview({ lesson }: { lesson: { title: string; pages: [number, nu
     <div className="rise rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-4 shadow-2xl">
       <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--ink-faint)]">Preview <span className="font-normal normal-case tracking-normal">معاينة</span></p>
       <h3 className="mt-1 text-lg font-bold">{lesson.title}</h3>
-      <p className="page-number mt-1">Pages {lesson.pages[0]}{'\u2013'}{lesson.pages[1]} <span className="text-[var(--ink-faint)]">صفحات</span></p>
+      <p className="page-number mt-1">pp. {lesson.pages[0]}{'\u2013'}{lesson.pages[1]}</p>
       {lesson.labels && (
         <p className="mt-2 flex flex-wrap gap-1.5">
           {lesson.labels.grammar && (
@@ -48,15 +48,15 @@ function LessonPreview({ lesson }: { lesson: { title: string; pages: [number, nu
         </ul>
       )}
       <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-[11px] text-[var(--ink-faint)]">
-        {exercises > 0 && <span>{exercises} exercise{exercises > 1 ? 's' : ''} <span>تمارين</span></span>}
+        {exercises > 0 && <span>{exercises} ex.</span>}
         {audio > 0 && (
           <span className="inline-flex items-center gap-1">
-            <IconVolume size={11} /> {audio} <span>صوت</span>
+            <IconVolume size={11} /> {audio}
           </span>
         )}
         {videos > 0 && (
           <span className="inline-flex items-center gap-1 text-accent-600">
-            <IconVideo size={11} /> {videos} <span>فيديو</span>
+            <IconVideo size={11} /> {videos}
           </span>
         )}
       </div>
@@ -95,7 +95,7 @@ export default function UnitPage() {
 
       <nav className="flex items-center gap-1 text-sm text-[var(--ink-faint)]">
         <Link to="/" className="inline-flex items-center gap-1 hover:text-[var(--ink)]">
-          <IconHome size={14} /> Home <span className="text-[var(--ink-faint)]">الرئيسية</span>
+          <IconHome size={14} /> Home
         </Link>
         <IconChevronRight size={13} />
         <span className="text-[var(--ink)]">{label}</span>

@@ -212,7 +212,7 @@ export default function LessonPage() {
 
       <nav className="mb-4 flex flex-wrap items-center gap-1 text-sm text-[var(--ink-faint)]">
         <Link to="/" className="inline-flex items-center gap-1 hover:text-[var(--ink)]">
-          <IconHome size={14} /> Home <span className="text-[var(--ink-faint)]">الرئيسية</span>
+          <IconHome size={14} /> Home
         </Link>
         <IconChevronRight size={13} className="text-[var(--ink-faint)]" />
         <Link to={`/unit/${unit.id}`} className="hover:text-[var(--ink)]">
@@ -330,7 +330,7 @@ export default function LessonPage() {
               {complete ? 'Lesson done · تم الدرس' : 'Finish lesson? · إنهاء الدرس؟'}
             </h2>
             <p className="mt-1.5 text-sm text-[var(--ink-soft)]">
-              {complete ? 'Progress saved on this device. تم الحفظ على هذا الجهاز.' : 'Mark complete when ready. حدّد كمكتمل عند الانتهاء.'}
+              {complete ? 'Progress saved. تم الحفظ.' : 'Mark complete when ready. حدّد كمكتمل.'}
             </p>
           </div>
           <div className="flex flex-wrap gap-2">
